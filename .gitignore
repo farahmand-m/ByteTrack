@@ -142,3 +142,6 @@ YOLOX_outputs
 
 # PyCharm
 .idea
+
+# Datasets
+/datasets/*
