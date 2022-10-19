@@ -64,7 +64,7 @@ if __name__ == '__main__':
     for filepath, box, split, label in zip(filepaths, boxes, splits, labels):
         index = len(images[split]) + 1
         category_id = label if args.separate else 1
-        images[split].append({'id': index, **get_image_info(filepath)})
+        images[split].append({'id': index, 'video_id': index, **get_image_info(filepath)})
         annotations[split].append({'id': index, 'image_id': index, 'category_id': category_id, **create_annotation(box)})
     for split, name in enumerate(subsets):
         output = {'images': images[split], 'annotations': annotations[split], 'categories': categories}
