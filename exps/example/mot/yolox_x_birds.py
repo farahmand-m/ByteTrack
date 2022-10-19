@@ -17,8 +17,8 @@ class Exp(MyExp):
         self.exp_name = 'yolox_x_birds'
         self.train_ann = "train.json"
         self.val_ann = "test.json"
-        self.input_size = (512, 928)
-        self.test_size = (512, 928)
+        self.input_size = (800, 800)
+        self.test_size = (800, 800)
         self.random_size = (18, 32)
         self.max_epoch = 80
         self.print_interval = 20
