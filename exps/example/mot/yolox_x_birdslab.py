@@ -17,12 +17,9 @@ class Exp(MyExp):
         self.exp_name = 'yolox_x_birdslab'
         self.train_ann = "train.json"
         self.val_ann = "test.json"
-        # TODO: Images are 1920x1200 (8-to-5 ratio). Change image sizes accordingly.
-        # Used 1184 rather than 1200. It has to be a multiple of 32.
-        self.input_size = (1920, 1184)
-        self.test_size = (1920, 1184)
-        # TODO: Disable random resize by choosing appropriate bounds (inclusive).
-        self.random_size = (60, 60)
+        self.input_size = (1600, 960)	# multiplicand of 32
+        self.test_size = (1600, 960)	# multiplicand of 32
+        self.random_size = (50, 50)	# multiplied by 32
         self.max_epoch = 80
         self.print_interval = 20
         self.eval_interval = 5
@@ -43,7 +40,7 @@ class Exp(MyExp):
         )
 
         dataset = MOTDataset(
-            data_dir=os.path.join(get_yolox_datadir(), "CaltechBirds"),
+            data_dir=os.path.join(get_yolox_datadir(), "BirdsLab"),
             json_file=self.train_ann,
             name='',
             img_size=self.input_size,
@@ -98,10 +95,10 @@ class Exp(MyExp):
         from yolox.data import MOTDataset, ValTransform
 
         valdataset = MOTDataset(
-            data_dir=os.path.join(get_yolox_datadir(), "CaltechBirds"),
+            data_dir=os.path.join(get_yolox_datadir(), "BirdsLab"),
             json_file=self.val_ann,
             img_size=self.test_size,
-            name='train',
+            name='',
             preproc=ValTransform(
                 rgb_means=(0.485, 0.456, 0.406),
                 std=(0.229, 0.224, 0.225),
